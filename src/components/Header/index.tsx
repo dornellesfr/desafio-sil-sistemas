@@ -4,7 +4,7 @@ import { StyledHeader } from './style';
 function Header() {
   return (
     <StyledHeader img={logo}>
-      <div className='logo'  />
+      <img src={logo} alt="logo-sil-sistemas" className='logo' />
 
     </StyledHeader>
   );
