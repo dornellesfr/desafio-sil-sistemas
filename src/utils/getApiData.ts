@@ -8,3 +8,5 @@ async function getDataApi(endpoint: string) {
     return 'error'
   }
 }
+
+export default getDataApi;
