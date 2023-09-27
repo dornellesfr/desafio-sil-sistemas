@@ -1,12 +1,12 @@
-import ICovidCases from "./ICovidCases";
+import IDataCard from "./IDataCard";
+import { ReactElement } from "react";
 
 interface ICard {
-  icon: string;
+  icon: ReactElement;
   textTop: string;
-  selects?: string;
   textBottom: string;
   color: string;
-  content?: ICovidCases
+  content: IDataCard[]
 }
 
 export default ICard;
