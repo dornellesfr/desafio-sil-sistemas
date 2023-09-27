@@ -12,7 +12,6 @@ function Card(props: ICard) {
 
   const [mainCardText, setMainCardText] = useState(props.content[0].main);
 
-
   function changeSelectTextCard(event: React.ChangeEvent<HTMLSelectElement>) {
     setMainCardText(props.content[parseInt(event.target.value)].main)
   }
@@ -25,7 +24,7 @@ function Card(props: ICard) {
           <option key={id} value={id}>{select}</option>
           )) }
       </select>
-      { isLoading ? <Loading /> : <p className='primary-info'>{mainCardText}</p>  }
+      { isLoading ? <Loading /> : <p className='primary-info'>{mainCardText}</p> }
       <a className='link-info' href="#">{props.textBottom}</a>
     </StyledCard>
   )

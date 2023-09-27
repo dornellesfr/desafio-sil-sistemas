@@ -20,16 +20,8 @@ function App() {
       this.get('api/covidcases', () => {
         return dataCovid;
       });
-      this.get('api/posts', () => {
-        return [];
-      });
     }
   })
-
-  useEffect(() => {
-    console.log(covidData);
-    
-  }, [covidData])
 
   useEffect(() => {
     const dataCovid = async () => {
@@ -45,7 +37,7 @@ function App() {
     dataCovid();
     dataPosts();
   }, [])
-
+  
   return (
     <>
       <Header />
