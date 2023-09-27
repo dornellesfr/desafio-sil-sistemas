@@ -1,38 +1,33 @@
-import { ChangeEventHandler, useState } from 'react';
+import { useState } from 'react';
+
 import ICard from '../../interfaces/ICard';
 import Loading from '../Loading';
+import StyledCard from './style';
 
 function Card(props: ICard) {
-  const [mainCardText, setMainCardText] = useState(props.content[0].main);
-  // const [isLoading, setIsLoading] = useState(true);
-
-  if (!props.content[0].select) {
-    return (
-      <section>
-        <span>{props.icon}</span>
-        <p>{mainCardText}</p>
-        <p>{props.textTop}</p>
-        <p>{props.textBottom}</p>
-      </section>
-    );
+  const [isLoading, setIsLoading] = useState(true);
+  if (props.content) {
+    setIsLoading(false)
   }
+
+  const [mainCardText, setMainCardText] = useState(props.content[0].main);
+
 
   function changeSelectTextCard(event: React.ChangeEvent<HTMLSelectElement>) {
     setMainCardText(props.content[parseInt(event.target.value)].main)
   }
 
   return (
-    <section>
-      <span>{props.icon}</span>
+    <StyledCard>
+      <h2><i>{props.icon}</i>{props.textTop}</h2>
       <select onChange={ changeSelectTextCard }>
         { props.content.map(({ id, select }) => (
           <option key={id} value={id}>{select}</option>
-        )) }
+          )) }
       </select>
-      <p>{mainCardText}</p>
-      <p>{props.textTop}</p>
-      <p>{props.textBottom}</p>
-    </section>
+      { isLoading ? <Loading /> : <p className='primary-info'>{mainCardText}</p>  }
+      <a className='link-info' href="#">{props.textBottom}</a>
+    </StyledCard>
   )
 }
 
