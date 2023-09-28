@@ -1,27 +1,22 @@
-# React + TypeScript + Vite
+# DESAFIO SIL SISTEMAS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1.0 Este projeto tem como objetivo cumprir requisitos de desafio para vaga da Sil Sistemas.
 
-Currently, two official plugins are available:
+2.0 O projeto tem como finalidade descobrir conhecimentos de candidatos, como TypeScript, Requisições para API, CSS e outros.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3.0 As tecnologias utilizadas são:
+ - React para melhor manuntenção e aproveitamento de código;
+ - TypeScript para tipagem e melhor leitura e entendimento do código;
+ - Axios para requisições a APIs externas;
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+4.0 Como rodar o projeto:
+Clonar o projeto com: 
+```
+git clone git@github.com:dornellesfr/desafio-sil-sistemas.git
+```
+Dentro da pasta do projeto executar:
+```
+pnpm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+abrir o navegador no link http://localhost:5173/

@@ -1,15 +1,10 @@
 import { useState } from 'react';
 
 import ICard from '../../interfaces/ICard';
-import Loading from '../Loading';
+// import Loading from '../Loading';
 import StyledCard from './style';
 
 function Card(props: ICard) {
-  const [isLoading, setIsLoading] = useState(true);
-  if (props.content) {
-    setIsLoading(false)
-  }
-
   const [mainCardText, setMainCardText] = useState(props.content[0].main);
 
   function changeSelectTextCard(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -24,7 +19,7 @@ function Card(props: ICard) {
           <option key={id} value={id}>{select}</option>
           )) }
       </select>
-      { isLoading ? <Loading /> : <p className='primary-info'>{mainCardText}</p> }
+      <p className='primary-info'>{mainCardText}</p>
       <a className='link-info' href="#">{props.textBottom}</a>
     </StyledCard>
   )

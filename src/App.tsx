@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import getDataApi from "./utils/getApiData";
 import { createServer } from 'miragejs'
 
+import getDataApi from "./utils/getApiData";
 import Header from "./components/Header";
 import Card from "./components/Card";
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -12,8 +12,8 @@ import StyledMain from "./styleApp";
 import dataCovid from "./helpers/dataCovidCases";
 
 function App() {
-  const [covidData, setCovidData] = useState([]);
-  const [posts, setPosts] = useState([])
+  // const [covidData, setCovidData] = useState([]);
+  // const [posts, setPosts] = useState([])
 
   createServer({
     routes() {
@@ -24,18 +24,18 @@ function App() {
   })
 
   useEffect(() => {
-    const dataCovid = async () => {
-      const result = await getDataApi('api/covidcases');
-      setCovidData(result);      
-    }
+    // const dataCovid = async () => {
+    //   const result = await getDataApi('api/covidcases');
+    //   setCovidData(result);      
+    // }
 
-    const dataPosts = async () => {
-      const result = await getDataApi('api/posts');
-      setPosts(result);
-    }
+    // const dataPosts = async () => {
+    //   const result = await getDataApi('api/posts');
+    //   setPosts(result);
+    // }
 
-    dataCovid();
-    dataPosts();
+    // dataCovid();
+    // dataPosts();
   }, [])
   
   return (
@@ -46,13 +46,13 @@ function App() {
           icon={<VisibilityIcon />}
           textTop="Confirmed cases"
           textBottom="Learn how to prevent infections ➝"
-          content={covidData}
+          content={dataCovid}
         />
         <Card
           icon={<FormatListBulletedIcon />}
           textTop="Top posts"
           textBottom="Do you want more visits? Contact us!"
-          content={posts}
+          content={dataCovid}
         />
         <TrustPilotCard />
       </StyledMain>
