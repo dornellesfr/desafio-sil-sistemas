@@ -2,11 +2,11 @@ import axios from "axios";
 
 async function getDataApi(endpoint: string) {
   try {
-    const response = await axios.get(endpoint);
-    return response.data
-  } catch (error) {
-    return 'error'
+    const { data } = await axios.get(endpoint, { signal: AbortSignal.timeout(4000) });
+    return data
+  } catch (err){
+    return 'err'
   }
-}
+};
 
 export default getDataApi;
