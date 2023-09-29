@@ -6,10 +6,6 @@ createServer({
   routes() {
     this.namespace = 'api';
 
-    this.get('covidstatesbr', () => {
-      return brStates;
-    } );
-
     brStates.forEach(({ name }) => {
       this.get(`covidstatesbr/${name}`, () => {
         return statesCases[name as keyof typeof statesCases];
