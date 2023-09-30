@@ -36,7 +36,7 @@ const StyledCard = styled.section`
 
   & select {
     border: none;
-    background-color: #f7f7f7;
+    background-color: #f9f9f9;
     cursor: pointer;
     text-align: center;
     width: 50%;
