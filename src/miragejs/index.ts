@@ -9,7 +9,9 @@ createServer({
     brStates.forEach(({ name }) => {
       this.get(`covidstatesbr/${name}`, () => {
         return statesCases[name as keyof typeof statesCases];
-      })
+      },
+      { timing: 3000 }
+      )
     });
 
     this.get('posts', () => {
