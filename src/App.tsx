@@ -6,6 +6,7 @@ import Card from "./components/Card";
 import TrustPilotCard from "./components/TrustPilotCard";
 import StyledMain from "./styleApp";
 import brStates from "./helpers/brazilianStates";
+import jokeCategory from './helpers/jokeCategory';
 
 function App() {
   return (
@@ -17,12 +18,14 @@ function App() {
           textTop="Confirmed cases"
           textBottom="Learn how to prevent infections ➝"
           options={brStates}
+          endpoint='api/covidstatesbr/'
         />
         <Card
           icon={<FormatListBulletedIcon />}
-          textTop="Top posts"
-          textBottom="Do you want more visits? Contact us!"
-          options={brStates}
+          textTop="Chuck Norris joke"
+          textBottom="Do you want more about Chuck Norris?"
+          options={jokeCategory}
+          endpoint='api/chucknorrisjoke/'
         />
         <TrustPilotCard />
       </StyledMain>
