@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
-import IBrazilianStates from "./IBrazilianStates";
 
 interface ICard {
   icon: ReactElement;
   textTop: string;
   textBottom: string;
-  options: IBrazilianStates[];
+  options: string[];
+  endpoint: string;
 }
 
 export default ICard;
