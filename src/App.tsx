@@ -27,7 +27,7 @@ function App() {
         <TrustPilotCard />
       </StyledMain>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

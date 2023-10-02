@@ -6,7 +6,7 @@ function Loading() {
     <StyledLoading>
       <img src={spinner} alt="spinner" />
     </StyledLoading>
-  )
+  );
 }
 
 export default Loading;

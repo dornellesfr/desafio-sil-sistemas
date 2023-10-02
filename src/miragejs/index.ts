@@ -1,4 +1,4 @@
-import { createServer } from 'miragejs'
+import { createServer } from 'miragejs';
 import brStates from '../helpers/brazilianStates';
 import statesCases from '../helpers/covidCases';
 
@@ -11,11 +11,7 @@ createServer({
         return statesCases[name as keyof typeof statesCases];
       },
       { timing: 3000 }
-      )
-    });
-
-    this.get('posts', () => {
-      return [];
+      );
     });
   }
-})
+});

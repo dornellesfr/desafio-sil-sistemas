@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
 import ICard from '../../interfaces/ICard';
@@ -13,19 +14,23 @@ function Card(props: ICard) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [mainContent, setMainContent] = useState<JSX.Element | undefined>();
 
-  useEffect(() => {
+  function loadApi() {
     const dataCard = async () => {
       const result: number | string = await getDataApi(`api/covidstatesbr/${selectItem}`);
       if (result === 'err') {
-        setMainContent(reloadData);
+        setMainContent(errorApi);
         setIsLoading(false);
       } else {
         setApiData(result);
         setIsLoading(false);
       }
-    }
+    };
 
     dataCard();
+  }
+
+  useEffect(() => {
+    loadApi();
   }, [selectItem]);
 
   useEffect(() => {
@@ -33,28 +38,33 @@ function Card(props: ICard) {
   }, [apiData]);
 
   function handleMainTextCard(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectItem(event.target.value)
+    setSelectItem(event.target.value);
     setIsLoading(true);
+  }
+
+  function handleReloadApi() {
+    setIsLoading(true);
+    loadApi();
   }
 
   const sucessfulData = (
   <p
     className='primary-info'>{apiData}
-  </p>)
+  </p>);
 
-  const reloadData = (
+  const errorApi = (
     <div className='info-to-reload'>
       <ErrorIcon />
       <p>Request failed!</p>
       <Button
         variant="contained"
-        // onClick={...}
+        onClick={ handleReloadApi }
         className='button-reload'
       >
         Reload
       </Button>
     </div>
-  )
+  );
 
   return (
     <StyledCard>
@@ -67,7 +77,7 @@ function Card(props: ICard) {
       { isLoading ? <Loading /> : mainContent }
       <a className='link-info' href="#">{props.textBottom}</a>
     </StyledCard>
-  )
+  );
 }
 
 export default Card;

@@ -16,6 +16,10 @@ const StyledTrustPilotCard = styled.section`
     gap: 20px;
   }
 
+  & div h2 {
+    color: #fff;
+  }
+
   & p {
     color: #fff;
   }
