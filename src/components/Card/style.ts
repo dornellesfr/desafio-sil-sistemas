@@ -39,10 +39,16 @@ const StyledCard = styled.section`
     background-color: #f9f9f9;
     cursor: pointer;
     text-align: center;
-    width: 50%;
+    width: 80%;
     justify-self: center;
     align-self: center;
     outline: none;
+  }
+
+  & article {
+    justify-self: center;
+    align-self: center;
+    grid-column: 1 / -1;
   }
 `;
 
