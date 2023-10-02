@@ -9,24 +9,21 @@ import ErrorIcon from '@mui/icons-material/Error';
 import Button from '@mui/material/Button';
 
 function Card(props: ICard) {
-  const [apiData, setApiData] = useState<number | string>();
-  const [selectItem, setSelectItem] = useState<string>(props.options[0].name);
+  const [apiData, setApiData] = useState<string | number | null>(null);
+  const [selectItem, setSelectItem] = useState<string>(props.options[0]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [mainContent, setMainContent] = useState<JSX.Element | undefined>();
+  const [mainContent, setMainContent] = useState<JSX.Element>(Loading);
 
-  function loadApi() {
-    const dataCard = async () => {
-      const result: number | string = await getDataApi(`api/covidstatesbr/${selectItem}`);
-      if (result === 'err') {
-        setMainContent(errorApi);
-        setIsLoading(false);
-      } else {
-        setApiData(result);
-        setIsLoading(false);
-      }
-    };
-
-    dataCard();
+  async function loadApi() {
+    const endpoint = props.endpoint + selectItem;
+    try {
+      const result = await getDataApi(endpoint);
+      setApiData(result.value);
+    } catch (err) {
+      setMainContent(errorApi);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -54,7 +51,7 @@ function Card(props: ICard) {
 
   const errorApi = (
     <div className='info-to-reload'>
-      <ErrorIcon />
+      <ErrorIcon className='icon-warning'/>
       <p>Request failed!</p>
       <Button
         variant="contained"
@@ -70,8 +67,8 @@ function Card(props: ICard) {
     <StyledCard>
       <h2><p>{props.icon}</p>{props.textTop}</h2>
       <select onChange={ handleMainTextCard }>
-        { props.options.map(({ id, name }) => (
-          <option key={id} value={name}>{name}</option>
+        { props.options.map((name) => (
+          <option key={name} value={name}>{name}</option>
           )) }
       </select>
       { isLoading ? <Loading /> : mainContent }
